@@ -27,26 +27,30 @@ def insertar_despues(referencia, dato):
             
             nuevo["anterior"] = actual
             nuevo["siguiente"] = siguiente_nodo
-            
             actual["siguiente"] = nuevo
+            
             if siguiente_nodo is not None:
                 siguiente_nodo["anterior"] = nuevo
             else:
-                
                 cola = nuevo
-                
             return True
         actual = actual["siguiente"]
-        
-    return False 
+    return False
 
-print("\n--- PRUEBAS RETO 2: INSERCIÓN ---")
+def imprimir_lista():
+    actual = cabeza
+    elementos = []
+    while actual is not None:
+        elementos.append(actual["dato"])
+        actual = actual["siguiente"]
+    print(" <-> ".join(elementos))
+
+print("=Reto 2: Insercion=")
 print("Lista antes de insertar:")
 imprimir_lista()
 
-# Insertamos "Productos" después de "Catálogo"
-resultado = insertar_despues("Catálogo", "Productos")
-print(f"¿Inserción exitosa?: {resultado}")
+resultado = insertar_despues("Continuacion", "Final")
+print(f"Lista cambiada?: {resultado}")
 
 print("Lista después de insertar:")
 imprimir_lista()
